@@ -3,12 +3,17 @@
 public class CharMatrix
 {
   // Instance variables:
-
+  
   // Constructor: creates a grid with dimensions rows, cols,
   // and fills it with spaces
   public CharMatrix(int rows, int cols)
   {
-    ...
+    this.grid = new char[rows][cols];
+    
+    for(int i = 0; i < this.grid.length; i++)
+    {
+        for;
+    }
   }
 
   // Constructor: creates a grid with dimensions rows , cols ,
