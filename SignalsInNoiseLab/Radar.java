@@ -13,7 +13,7 @@ public class Radar
     private boolean[][] currentScan;
     
     // value of each cell is incremented for each scan in which that cell triggers detection
-    private int[][] accumulator;
+    private int[][] accumulator; 
     
     // location of the monster
     private int monsterLocationRow;
@@ -35,11 +35,11 @@ public class Radar
     {
         // initialize the currentScan 2D array and the accumulator 2D array
         
-        
         //
         // !!! add code here !!!
-        //
-        
+        // set how big is the radar
+        accumulator = new int[rows][cols];
+        currentScan = new boolean[rows][cols];
         
         // randomly set the location of the monster (can be explicity set through the
         //  setMonsterLocation method for the unit test
@@ -49,6 +49,7 @@ public class Radar
         noiseFraction = 0.05;
         numScans= 0;
     }
+    
     
     /**
      * Performs a scan of the radar. Noise is injected into the grid and the accumulator is updated.
@@ -63,12 +64,37 @@ public class Radar
         //    4. update the accumulator 2D array based on the state of the currentScan 2D array
         //    5. increment the numScans instance variable
         
-        
         //
         // !!! add code here !!!
         //
         
+        //initalize all boolean to false
+        for(int i = 0; i < currentScan.length;i++)
+        {
+            for (int z = 0; z < currentScan[i].length;z++)
+            {
+                currentScan[i][z] = false;
+            }
+        }
         
+        //set the location of the monster in boolean array to true
+        currentScan[monsterLocationRow][monsterLocationCol] = true;
+        
+        // set noise
+        this.injectNoise();
+        
+        // update the accumulator, based on the times appears
+        numScans++;
+        for(int i = 0; i < currentScan.length; i++)
+        {
+            for(int x = 0; x < currentScan[i].length;x++)
+            {
+                if(currentScan[i][x] == true)
+                {
+                    accumulator[i][x]++;
+                }
+            }
+        }
     }
 
     /**
@@ -171,6 +197,16 @@ public class Radar
         // !!! add code here !!!
         //
         
+        for(int i = 0; i < currentScan.length; i++)
+        {
+            for(int z = 0; z < currentScan[i].length;z++)
+            {
+                if(Math.random() <= 0.15)
+                {
+                    currentScan[i][z] = true;
+                }
+            }
+        }
         
     }
     
