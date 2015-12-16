@@ -30,6 +30,8 @@ public class Radar
      * 
      * @param   rows    the number of rows in the radar grid
      * @param   cols    the number of columns in the radar grid
+     * @initalize accumulator , currentScan , noiseFraction, and numScans
+     * @Randomly set the monster's location
      */
     public Radar(int rows, int cols)
     {
@@ -53,6 +55,10 @@ public class Radar
     
     /**
      * Performs a scan of the radar. Noise is injected into the grid and the accumulator is updated.
+     * set the currentScan so get ready
+     * set the location of the monster in currentScan to true
+     * inject random noise to grid
+     * track how many times it run and keep update accumulator
      * 
      */
     public void scan()
@@ -183,7 +189,7 @@ public class Radar
     
     /**
      * Sets cells as falsely triggering detection based on the specified probability
-     * 
+     * Set the noise into the grid
      */
     private void injectNoise()
     {
